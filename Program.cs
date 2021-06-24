@@ -19,7 +19,7 @@ namespace WFBotSponsorUpdater
             const string Magic = "<!--SPONSORS_BEGIN-->";
             var sponsorsLine = Magic + sponsorsText;
 
-            var lines = await File.ReadAllLinesAsync("README.md", Encoding.UTF8);
+            var lines = await File.ReadAllLinesAsync("README.md", new UTF8Encoding(false));
             for (var i = 0; i < lines.Length; i++)
             {
                 var lineInReadme = lines[i];
@@ -32,7 +32,7 @@ namespace WFBotSponsorUpdater
                     break;
                 }
             }
-            File.WriteAllLines("README.md", lines, Encoding.UTF8);
+            File.WriteAllLines("README.md", lines, new UTF8Encoding(false));
         }
 
         static async Task<List<User>> GetAllSponsors()
